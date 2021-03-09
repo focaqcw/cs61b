@@ -114,20 +114,23 @@ public class IntList {
     }
 
     public static void reverse(IntList A) {
-        IntList temp0 = null;
-        IntList A_copy = IntList.of(0);
-        A_copy.first = A.first;
-        A_copy.rest = A.rest;
-        IntList temp1 = A_copy;
-        IntList temp2;
-        while(temp1.rest != null){
-            temp2 = temp1.rest;
-            temp1.rest = temp0;
-            temp0 = temp1;
-            temp1 = temp2;
+        if (A != null){
+            IntList temp0 = null;
+            IntList A_copy = IntList.of(0);
+            A_copy.first = A.first;
+            A_copy.rest = A.rest;
+            IntList temp1 = A_copy;
+            IntList temp2;
+            while(temp1.rest != null){
+                temp2 = temp1.rest;
+                temp1.rest = temp0;
+                temp0 = temp1;
+                temp1 = temp2;
+            }
+            A.first = temp1.first;
+            A.rest = temp0;
         }
-        A.first = temp1.first;
-        A.rest = temp0;
+
 
     }
 

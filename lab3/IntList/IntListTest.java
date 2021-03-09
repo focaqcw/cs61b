@@ -70,17 +70,22 @@ public class IntListTest {
     public void testReverse() {
         IntList A = IntList.of(1, 2, 3);
         IntList exp_A = IntList.of(3, 2, 1);
-        IntList.Reverse(A);
+        IntList.reverse(A);
 
         IntList B = new IntList();
 //        B = IntList();
         IntList exp_B = new IntList();
 //        exp_B = IntList.of();
-        IntList.Reverse(B);
+        IntList.reverse(B);
 
         assertEquals(exp_A, A);
         assertNotEquals(IntList.of(1, 2, 3), A);
         assertEquals(B, exp_B);
+
+        IntList C = null;
+        IntList.reverse(C);
+        assertEquals(null, C);
+
     }
 
     /** If you're running this from the command line, you'll need
