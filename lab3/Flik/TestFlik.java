@@ -1,20 +1,21 @@
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+public class TestFlik {
 
-public class HorribleSteve {
     @Test
-    public void something() {
+    public void TEST1() {
         int i = 500;
         int j = 500;
         boolean res = Flik.isSameNumber(i, j);
+//        boolean res = i == j;
         assertEquals(Boolean.TRUE, res);
 
     }
 
-
-
-    public static void main(String [] args) {
+    @Test
+    public void TEST2() {
         int i = 0;
         for (int j = 0; i < 500; ++i, ++j) {
             if (!Flik.isSameNumber(i, j)) {
@@ -22,5 +23,8 @@ public class HorribleSteve {
             }
         }
         System.out.println("i is " + i);
+
     }
+
+
 }
