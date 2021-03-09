@@ -113,7 +113,7 @@ public class IntList {
 
     }
 
-    public static void Reverse(IntList A) {
+    public static void reverse(IntList A) {
         IntList temp0 = null;
         IntList A_copy = IntList.of(0);
         A_copy.first = A.first;
