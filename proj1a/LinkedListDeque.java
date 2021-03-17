@@ -16,6 +16,8 @@ public class LinkedListDeque<T> {
 
     public LinkedListDeque() {
         sentinel = new StuffNode(null, null,null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
         size = 0;
     }
 
@@ -31,9 +33,24 @@ public class LinkedListDeque<T> {
         StuffNode new_first = new StuffNode(item, sentinel, sentinel.next);
         sentinel.next.prev = new_first;
         sentinel.next= new_first;
+
+        if (sentinel.prev == sentinel){
+            sentinel.prev = new_first;
+        }
+
         size += 1;
     }
-//    public void addLast(T item):
+    public void addLast(T item){
+        StuffNode new_last = new StuffNode(item, sentinel.prev, sentinel);
+        sentinel.prev.next = new_last;
+        sentinel.prev = new_last;
+
+        if (sentinel.next == sentinel){
+            sentinel.next = new_last;
+        }
+
+        size += 1;
+    }
     public boolean isEmpty(){
         return size == 0;
     }
@@ -41,8 +58,67 @@ public class LinkedListDeque<T> {
     public int size(){
         return size;
     }
-//    public void printDeque(): Prints the items in the deque from first to last, separated by a space.
-//    public T removeFirst(): Removes and returns the item at the front of the deque. If no such item exists, returns null.
-//    public T removeLast(): Removes and returns the item at the back of the deque. If no such item exists, returns null.
-//    public T get(int index): Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth. If no such item exists, returns null. Must not alter the deque!
+    public void printDeque(){
+        if (size > 0){
+            StuffNode curr_node = sentinel.next;
+            System.out.print(curr_node.item + " ");
+            while (curr_node.next != sentinel){
+                curr_node = curr_node.next;
+                System.out.print(curr_node.item + " ");
+            }
+            System.out.print('\n');
+        }
+    }
+
+    public T removeFirst(){
+        if (size == 0){
+            return null;
+        }
+
+        StuffNode temp = sentinel.next;
+        sentinel.next.next.prev = sentinel;
+        sentinel.next = temp.next;
+
+        size -= 1;
+        return temp.item;
+
+    }
+    public T removeLast(){
+        if (size == 0){
+            return null;
+        }
+
+        StuffNode temp = sentinel.prev;
+        sentinel.prev.prev.next = sentinel;
+        sentinel.prev = temp.prev;
+
+        size -= 1;
+        return temp.item;
+    }
+    public T get(int index){
+        int curr = 0;
+        StuffNode curr_node = sentinel.next;
+        while(curr < index){
+            curr_node = curr_node.next;
+            curr += 1;
+        }
+        return curr_node.item;
+    }
+
+    public StuffNode getRecursiveHelper(int index){
+        if(index >= size){
+            return sentinel;
+        }
+        if(index == 0){
+            return sentinel.next;
+        }else{
+            return getRecursiveHelper(index-1).next;
+        }
+
+    }
+
+    public T getRecursive(int index){
+        return getRecursiveHelper(index).item;
+
+    }
 }
