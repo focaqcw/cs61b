@@ -34,7 +34,7 @@ public class ArrayDequeTest {
      * && is the "and" operation. */
     public static void addIsEmptySizeTest() {
         System.out.println("Running add/isEmpty/Size test.");
-        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+//        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
         ArrayDeque <String> lld1 = new ArrayDeque<String>();
 
@@ -56,7 +56,7 @@ public class ArrayDequeTest {
         System.out.println("Printing out deque: ");
         lld1.printDeque();
 
-        System.out.println("Printing out item 1: " + lld1.getRecursive(3));
+//        System.out.println("Printing out item 1: " + lld1.getRecursive(3));
 
 
         printTestStatus(passed);
@@ -68,7 +68,7 @@ public class ArrayDequeTest {
 
         System.out.println("Running add/remove test.");
 
-        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+//        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         // should be empty
@@ -78,8 +78,9 @@ public class ArrayDequeTest {
         // should not be empty
         passed = checkEmpty(false, lld1.isEmpty()) && passed;
 
-//		lld1.removeFirst();
-        lld1.removeLast();
+		lld1.removeFirst();
+//        int a = lld1.removeLast();
+//        System.out.println(a);
         // should be empty
         passed = checkEmpty(true, lld1.isEmpty()) && passed;
 
@@ -89,7 +90,35 @@ public class ArrayDequeTest {
 
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
-        addIsEmptySizeTest();
+//        addIsEmptySizeTest();
 //		addRemoveTest();
+        ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
+        lld1.addLast(33);
+        lld1.addLast(25);
+        lld1.addLast(33);
+        lld1.addLast(25);
+        lld1.addLast(33);
+        lld1.addLast(25);
+        lld1.addLast(33);
+        lld1.addLast(25);
+        lld1.addLast(33);
+        lld1.addLast(25);
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+        lld1.removeFirst();
+
+        System.out.println("Printing out deque: ");
+        lld1.printDeque();
+
+//        int size = lld1.size;
+//        int last = lld1.get(2);
+//        System.out.println(size);
+//        System.out.println(last);
+
     }
 }
