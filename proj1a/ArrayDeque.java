@@ -1,9 +1,10 @@
+
 public class ArrayDeque<T> {
-    public T[] items;
-    public int size;
 
+    private T[] items;
+    private int size;
 
-    public ArrayDeque(){
+    public ArrayDeque() {
         items = (T[]) new Object[8];
         size = 0;
     }
@@ -26,7 +27,7 @@ public class ArrayDeque<T> {
 //        System.out.println(items[1]);
     }
 
-    public void addLast(T item){
+    public void addLast(T item) {
         if (size == items.length) {
             resize(size + 1);
         }
@@ -36,41 +37,41 @@ public class ArrayDeque<T> {
 //        System.out.println(items[1]);
 
     }
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
-    public int size(){
+    public int size() {
         return size;
     }
-    public void printDeque(){
-        for (int i = 0; i < size; i ++){
+    public void printDeque() {
+        for (int i = 0; i < size; i++) {
             System.out.println(items[i]);
         }
     }
-    public T removeFirst(){
+    public T removeFirst() {
         T first = items[0];
-        System.arraycopy(items, 1, items, 0, size-1);
-        size -=1;
+        System.arraycopy(items, 1, items, 0, size - 1);
+        size -= 1;
 
-        if (size < items.length / 4){
-            resize(items.length * 2);
+        if (size < items.length / 4) {
+            resize(size * 2);
         }
 
         return first;
     }
-    public T removeLast(){
-        size -=1;
+    public T removeLast() {
+        size -= 1;
 
         T last = items[size];
-        if (size < items.length / 4){
-            resize(items.length * 2);
+        if (size < items.length / 4) {
+            resize(size * 2);
         }
 
         return last;
 
     }
-    public T get(int index){
-        if (index >= size){
+    public T get(int index) {
+        if (index >= size) {
             return null;
         }
 
@@ -78,3 +79,4 @@ public class ArrayDeque<T> {
     }
 
 }
+
