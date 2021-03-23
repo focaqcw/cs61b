@@ -24,6 +24,21 @@ public class TestPalindrome {
         assertTrue(palindrome.isPalindrome("A"));
         assertFalse(palindrome.isPalindrome("cattaC"));
         assertTrue(palindrome.isPalindrome("aAa"));
+        assertTrue(palindrome.isPalindrome(""));
+        assertTrue(palindrome.isPalindrome("  3  "));
+
+    }
+
+    @Test
+    public void testIsPal2() {
+        CharacterComparator obo = new OffByOne();
+        assertTrue(palindrome.isPalindrome("flake", obo));
+        assertFalse(palindrome.isPalindrome("abccba", obo));
+        assertFalse(palindrome.isPalindrome("aaa", obo));
+        assertTrue(palindrome.isPalindrome("bca", obo));
+        assertTrue(palindrome.isPalindrome("a", obo));
+        assertTrue(palindrome.isPalindrome("abcdcb", obo));
+
 
     }
 //    Uncomment this class once you've created your Palindrome class. */
