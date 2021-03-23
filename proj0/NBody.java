@@ -77,7 +77,7 @@ public class NBody{
 	        	// yForces[i] = planets[i].calcNetForceExertedByY(planets);
 	        	planets[i].update(dt,xForces[i], yForces[i]);
 	        	planets[i].draw();
-	        	System.out.println(i);
+	        	// System.out.println(i);
 
         	}
         	// StdDraw.clear();
